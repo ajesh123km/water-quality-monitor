@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Water Quality Data</title>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+</head>
+<body>
+  <h2>Live Water Quality Data</h2>
+  <p id="waterQualityText">Loading...</p>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    function fetchWaterQuality() {
+      database.ref("water_quality").on("value", (snapshot) => {
+        if (snapshot.exists()) {
+          document.getElementById("waterQualityText").innerText =
+            `TDS Level: ${snapshot.val().tds} ppm`;
+        } else {
+          document.getElementById("waterQualityText").innerText = "No Data Available";
+        }
+      });
+    }
+
+    fetchWaterQuality();
+  </script>
+</body>
+</html>
