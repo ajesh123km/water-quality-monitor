@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Live Water Quality Data</title>
+  <!-- Load Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
 </head>
@@ -10,16 +10,17 @@
   <p id="waterQualityText">Loading...</p>
 
   <script>
+    // Firebase Configuration
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
+  apiKey: "AIzaSyA_ob3U0T_K5KwHIAhUvGgU0uGwlixRM_Y",
+  authDomain: "watermonitoringfirebase.firebaseapp.com",
+  databaseURL: "https://watermonitoringfirebase-default-rtdb.firebaseio.com",
+  projectId: "watermonitoringfirebase",
+  storageBucket: "watermonitoringfirebase.firebasestorage.app",
+  messagingSenderId: "532374491505",
+  appId: "1:532374491505:web:86f032a45aa4e232ebe6d0"
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
 
